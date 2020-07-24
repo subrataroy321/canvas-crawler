@@ -52,7 +52,20 @@ let hero;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
+    // detectHit function
+    const detectHit = () => {
+        // check for collissiom on x asis
+        // check for collissiom on y asis
+        if (hero.x + hero.width > ogre.x &&
+            hero.x < ogre.x + ogre.width &&
+            hero.y + hero.height > orge.y &&
+            hero.y < ogre.y + ogre.height) {
+                console.log('collission! 💥')
+                ogre.alive = false;
 
+            }
+    }
+    
     const gameLoop = () => {
         // clear the canvas
         ctx.clearRect(0,0, game.width, game.height);
@@ -64,6 +77,7 @@ let hero;
             ogre.render();
             // chcek the collision
             // TODO detectHit()
+            detectHit();
         }
         // render the hero
         hero.render()
@@ -125,8 +139,8 @@ document.addEventListener('DOMContentLoaded', event => {
     // context
     ctx = game.getContext('2d');
 
-    ogre = new Crawler(100, 100, 80, 120, '#bada55');
-    hero = new Crawler(20, 100, 50, 50, 'hotpink');
+    ogre = new Crawler(300, 100, 80, 120, '#bada55');
+    hero = new Crawler(100, 100, 50, 50, 'hotpink');
     // hero.render();
     
     
